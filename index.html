@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Seating Map Editor</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script type="module" src="./js/main.js"></script>
+  <title>Doko-Seats Editor</title>
+  <style>html,body,#app{height:100%;margin:0}</style>
+  <!-- GLOBAL VUE BUILD (single runtime for every script) -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 </head>
-<body class="h-screen flex flex-col">
-  <div id="app" class="flex-1 flex flex-col"></div>
+<body>
+  <div id="app"></div>
+  <!-- Our application entry point (added in §3) -->
+  <script type="module" src="./js/main.js"></script>
 </body>
 </html>
-
- 
