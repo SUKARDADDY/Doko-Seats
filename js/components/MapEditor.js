@@ -1,4 +1,4 @@
-const { ref, reactive, watch, onMounted } = Vue;
+// Vue is loaded globally, so use the runtime APIs directly
 
 function pointInPolygon(point, vs) {
   let x = point.x, y = point.y;
@@ -22,14 +22,14 @@ export default {
   },
   emits: ['update:polygons', 'update:selectedPolygonId', 'update:selectedSeat'],
   setup(props, { emit }) {
-    const svgRef = ref(null);
-    const transform = reactive({ x: 0, y: 0, scale: 1 });
-    const drawing = reactive({ active: false, points: [] });
+    const svgRef = Vue.ref(null);
+    const transform = Vue.reactive({ x: 0, y: 0, scale: 1 });
+    const drawing = Vue.reactive({ active: false, points: [] });
 
-    const startPan = reactive({ active: false, x: 0, y: 0, tx: 0, ty: 0 });
+    const startPan = Vue.reactive({ active: false, x: 0, y: 0, tx: 0, ty: 0 });
 
-    const nextPolygonId = ref(1);
-    const nextSeatId = ref(1);
+    const nextPolygonId = Vue.ref(1);
+    const nextSeatId = Vue.ref(1);
 
     const onWheel = (e) => {
       e.preventDefault();
