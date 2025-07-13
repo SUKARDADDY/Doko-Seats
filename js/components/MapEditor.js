@@ -174,15 +174,16 @@ export default {
          @mousedown="onMouseDown" @mousemove="onMouseMove" @mouseup="onMouseUp"
          @click="onSvgClick" @dblclick="onDblClick">
       <g :transform="`translate(${transform.x},${transform.y}) scale(${transform.scale})`">
-        <polygon v-for="poly in polygons" :key="poly.id"
-                 :points="poly.points.map(p=>`${p.x},${p.y}`).join(' ')"
-                 fill="none" stroke="black" stroke-width="2"
-                 :class="{'stroke-blue-500': poly.id === selectedPolygonId}" />
-        <circle v-for="poly in polygons"
-                v-for="seat in poly.seats"
-                :key="seat.id"
-                :cx="seat.x" :cy="seat.y" r="4" fill="red"
-                @click.stop="seatClick(poly, seat)" />
+        <g v-for="poly in polygons" :key="poly.id">
+          <polygon
+            :points="poly.points.map(p => `${p.x},${p.y}`).join(' ')"
+            fill="none" stroke="black" stroke-width="2"
+            :class="{'stroke-blue-500': poly.id === selectedPolygonId}" />
+          <circle v-for="seat in poly.seats"
+                  :key="seat.id"
+                  :cx="seat.x" :cy="seat.y" r="4" fill="red"
+                  @click.stop="seatClick(poly, seat)" />
+        </g>
         <polyline v-if="drawing.active"
                   :points="drawing.points.map(p=>`${p.x},${p.y}`).join(' ')"
                   fill="none" stroke="blue" stroke-dasharray="4" />
