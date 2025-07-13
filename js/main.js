@@ -1,4 +1,4 @@
-import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js';
+const { createApp } = Vue;
 import Toolbar from './components/Toolbar.js';
 import MapEditor from './components/MapEditor.js';
 import SeatEditor from './components/SeatEditor.js';
