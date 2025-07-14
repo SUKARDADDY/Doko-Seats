@@ -128,18 +128,15 @@ export default {
           emit('update:selectedPolygonId', null);
         }
       } else if (props.activeTool === 'delete') {
-        if (props.selectedPolygonId) {
-          const idx = props.polygons.findIndex(p => p.id === props.selectedPolygonId);
-          if (idx !== -1) props.polygons.splice(idx, 1);
-          emit('update:selectedPolygonId', null);
-          emit('update:polygons', props.polygons);
-        } else if (props.selectedSeat) {
-          const poly = props.polygons.find(p => p.id === props.selectedSeat.polyId);
-          if (poly) {
-            const idx = poly.seats.findIndex(s => s.id === props.selectedSeat.id);
-            if (idx !== -1) poly.seats.splice(idx, 1);
+        const p = svgPoint(e);
+        for (let i = 0; i < props.polygons.length; i++) {
+          const poly = props.polygons[i];
+          if (pointInPolygon(p, poly.points)) {
+            props.polygons.splice(i, 1);
             emit('update:polygons', props.polygons);
+            emit('update:selectedPolygonId', null);
             emit('update:selectedSeat', null);
+            break;
           }
         }
       }
@@ -150,8 +147,18 @@ export default {
     };
 
     const seatClick = (poly, seat) => {
-      emit('update:selectedPolygonId', poly.id);
-      emit('update:selectedSeat', { ...seat, polyId: poly.id });
+      if (props.activeTool === 'delete') {
+        const idx = poly.seats.findIndex(s => s.id === seat.id);
+        if (idx !== -1) {
+          poly.seats.splice(idx, 1);
+          emit('update:polygons', props.polygons);
+          emit('update:selectedSeat', null);
+          emit('update:selectedPolygonId', null);
+        }
+      } else {
+        emit('update:selectedPolygonId', poly.id);
+        emit('update:selectedSeat', { ...seat, polyId: poly.id });
+      }
     };
 
     return {
