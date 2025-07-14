@@ -1,15 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Doko-Seats Editor</title>
-  <style>html,body,#app{height:100%;margin:0}</style>
-  <!-- GLOBAL VUE BUILD (single runtime for every script) -->
-  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-</head>
-<body>
-  <div id="app"></div>
-  <!-- Our application entry point (added in §3) -->
-  <script type="module" src="./js/main.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Doko-Seats Editor</title>
+
+    <!-- Reset margins and make the Vue mount-point fill the viewport -->
+    <style>
+      html,
+      body,
+      #app {
+        height: 100%;
+        margin: 0;
+      }
+    </style>
+
+    <!-- Load Vue 3 once, globally.  Provides the `Vue` object used in every component -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+
+  <body>
+    <!-- Vue mounts here -->
+    <div id="app"></div>
+
+    <!-- Entry point for your app  -->
+    <!-- If you move main.js, update this path (it’s currently in ./js/) -->
+    <script type="module" src="./js/main.js"></script>
+  </body>
 </html>
