@@ -173,7 +173,7 @@ export default {
          @wheel="onWheel"
          @mousedown="onMouseDown" @mousemove="onMouseMove" @mouseup="onMouseUp"
          @click="onSvgClick" @dblclick="onDblClick">
-      <g :transform="\`translate(${transform.x},${transform.y}) scale(${transform.scale})\`">
+      <g :transform="'translate(' + transform.x + ',' + transform.y + ') scale(' + transform.scale + ')'">
         <g v-for="poly in polygons" :key="poly.id">
           <polygon
             :points="poly.points.map(p => \`${p.x},${p.y}\`).join(' ')"
