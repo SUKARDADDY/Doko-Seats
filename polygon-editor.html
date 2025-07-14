@@ -19,8 +19,7 @@
         async getFile(url){ return (await fetch(url)).text(); },
         addStyle(text){ const style = Object.assign(document.createElement('style'),{textContent:text}); document.head.appendChild(style); }
       };
-      const PolygonEditor = Vue.defineAsyncComponent(()=>loadModule('./js/components/PolygonEditor.vue', options));
-      const App = { components:{ PolygonEditor }, template:`<PolygonEditor background='stadium.jpg' />` };
+      const App = Vue.defineAsyncComponent(() => loadModule('./App.vue', options));
       Vue.createApp(App).mount('#app');
     </script>
   </body>
