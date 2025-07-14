@@ -173,10 +173,10 @@ export default {
          @wheel="onWheel"
          @mousedown="onMouseDown" @mousemove="onMouseMove" @mouseup="onMouseUp"
          @click="onSvgClick" @dblclick="onDblClick">
-      <g :transform="`translate(${transform.x},${transform.y}) scale(${transform.scale})`">
+      <g :transform="\`translate(${transform.x},${transform.y}) scale(${transform.scale})\`">
         <g v-for="poly in polygons" :key="poly.id">
           <polygon
-            :points="poly.points.map(p => `${p.x},${p.y}`).join(' ')"
+            :points="poly.points.map(p => \`${p.x},${p.y}\`).join(' ')"
             fill="none" stroke="black" stroke-width="2"
             :class="{'stroke-blue-500': poly.id === selectedPolygonId}" />
           <circle v-for="seat in poly.seats"
@@ -185,7 +185,7 @@ export default {
                   @click.stop="seatClick(poly, seat)" />
         </g>
         <polyline v-if="drawing.active"
-                  :points="drawing.points.map(p=>`${p.x},${p.y}`).join(' ')"
+                  :points="drawing.points.map(p=>\`${p.x},${p.y}\`).join(' ')"
                   fill="none" stroke="blue" stroke-dasharray="4" />
         <circle v-for="(p,i) in drawing.points" :key="i" :cx="p.x" :cy="p.y" r="3" fill="blue" />
       </g>
