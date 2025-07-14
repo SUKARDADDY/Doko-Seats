@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <title>Doko-Seats Editor</title>
 
-    <!-- Reset margins and make the Vue mount-point fill the viewport -->
+    <!-- Make the Vue mount-point fill the viewport -->
     <style>
       html,
       body,
@@ -14,7 +14,7 @@
       }
     </style>
 
-    <!-- Load Vue 3 once, globally.  Provides the `Vue` object used in every component -->
+    <!-- Single, global Vue 3 build (gives you the `Vue` object) -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   </head>
 
@@ -22,8 +22,7 @@
     <!-- Vue mounts here -->
     <div id="app"></div>
 
-    <!-- Entry point for your app  -->
-    <!-- If you move main.js, update this path (it’s currently in ./js/) -->
+    <!-- App entry (lives in /js/) -->
     <script type="module" src="./js/main.js"></script>
   </body>
 </html>
