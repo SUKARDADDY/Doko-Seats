@@ -3,26 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <title>Doko-Seats Editor</title>
-
-    <!-- Make the Vue mount-point fill the viewport -->
-    <style>
-      html,
-      body,
-      #app {
-        height: 100%;
-        margin: 0;
-      }
-    </style>
-
-    <!-- Single, global Vue 3 build (gives you the `Vue` object) -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue3-sfc-loader/dist/vue3-sfc-loader.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      html,body,#app{height:100%;margin:0;}
+    </style>
   </head>
-
   <body>
-    <!-- Vue mounts here -->
-    <div id="app"></div>
-
-    <!-- App entry (lives in /js/) -->
+    <div id="app" class="w-full h-full"></div>
     <script type="module" src="./js/main.js"></script>
   </body>
 </html>
